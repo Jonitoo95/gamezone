@@ -1,0 +1,753 @@
+/* ===================================================
+   FEUILLE DE STYLE - GAMEZONE TOURNAMENT
+   Design Immersion E-Sport & Glassmorphism
+   BTS SIO - TD WEB
+   =================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+    --primary-red: #ff2a3b;
+    --primary-red-hover: #ff4757;
+    --red-glow: rgba(255, 42, 59, 0.4);
+    --red-glow-strong: rgba(255, 42, 59, 0.7);
+    
+    --glass-bg: rgba(16, 10, 14, 0.78);
+    --glass-bg-secondary: rgba(28, 16, 22, 0.85);
+    --glass-input: rgba(10, 6, 9, 0.75);
+    
+    --border-glass: rgba(255, 42, 59, 0.3);
+    --border-glass-hover: rgba(255, 42, 59, 0.7);
+    
+    --text-white: #ffffff;
+    --text-muted: #cbd5e1;
+    --text-dim: #94a3b8;
+    
+    --font-heading: 'Rajdhani', sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    
+    --radius: 12px;
+    --radius-sm: 6px;
+    --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===================================================
+   FOND IMMERSIF ARÈNE E-SPORT
+   =================================================== */
+body {
+    font-family: var(--font-body);
+    color: var(--text-white);
+    line-height: 1.6;
+    min-height: 100vh;
+    background: 
+        radial-gradient(circle at 50% 10%, rgba(255, 42, 59, 0.25) 0%, transparent 55%),
+        linear-gradient(rgba(10, 5, 8, 0.72), rgba(15, 6, 11, 0.88)),
+        url('bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===================================================
+   BARRE DE NAVIGATION (Glassmorphism Sombre)
+   =================================================== */
+.navbar {
+    background: rgba(14, 8, 12, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-glass);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 42, 59, 0.15);
+}
+
+.nav-container {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-shadow: 0 0 16px var(--red-glow);
+    transition: var(--transition);
+}
+
+.logo span.logo-icon {
+    font-size: 1.7rem;
+    filter: drop-shadow(0 0 10px var(--primary-red));
+}
+
+.logo:hover {
+    transform: scale(1.02);
+    color: #ff6b78;
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-link {
+    font-family: var(--font-heading);
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    transition: var(--transition);
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.nav-link:hover {
+    color: #ffffff;
+    background: rgba(255, 42, 59, 0.15);
+    border-color: var(--border-glass);
+    box-shadow: 0 0 12px var(--red-glow);
+}
+
+.nav-link.active {
+    color: #ffffff;
+    background: linear-gradient(135deg, rgba(255, 42, 59, 0.35) 0%, rgba(185, 28, 28, 0.25) 100%);
+    border-color: var(--primary-red);
+    box-shadow: 0 0 16px var(--red-glow);
+}
+
+/* ===================================================
+   CONTENEURS & CARTES GLASSMORPHISM
+   =================================================== */
+.container {
+    max-width: 580px;
+    margin: 45px auto;
+    padding: 0 20px;
+}
+
+.container-large {
+    max-width: 1050px;
+}
+
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius);
+    padding: 38px 34px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(255, 42, 59, 0.18);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-red), #ff7675, transparent);
+    box-shadow: 0 0 15px var(--primary-red);
+}
+
+.card-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.card-header h1 {
+    font-family: var(--font-heading);
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    margin: 10px 0 4px 0;
+    text-shadow: 0 0 20px var(--red-glow);
+}
+
+.card-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.card-header-flex h1 {
+    font-family: var(--font-heading);
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-shadow: 0 0 18px var(--red-glow);
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+}
+
+.badge-tag {
+    font-family: var(--font-mono);
+    display: inline-block;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ff2a3b 0%, #b91c1c 100%);
+    box-shadow: 0 0 12px var(--red-glow);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ===================================================
+   FORMULAIRE AVANCÉ
+   =================================================== */
+.game-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 13px 16px;
+    background: var(--glass-input);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-sm);
+    color: #ffffff;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    outline: none;
+    transition: var(--transition);
+    backdrop-filter: blur(8px);
+}
+
+input[type="date"] {
+    color-scheme: dark;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+input::placeholder {
+    color: var(--text-dim);
+}
+
+input:focus,
+select:focus {
+    border-color: var(--primary-red);
+    background: rgba(22, 12, 18, 0.9);
+    box-shadow: 0 0 0 2px rgba(255, 42, 59, 0.3), 0 0 20px var(--red-glow);
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff2a3b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 18px;
+    padding-right: 44px;
+}
+
+select option {
+    background-color: #120b10;
+    color: #ffffff;
+    padding: 12px;
+}
+
+/* ===================================================
+   BOUTONS ULTRA DYNAMIQUES
+   =================================================== */
+.btn-submit,
+.btn-primary {
+    font-family: var(--font-heading);
+    background: linear-gradient(135deg, #ff2a3b 0%, #dc2626 50%, #991b1b 100%);
+    color: #ffffff;
+    border: none;
+    padding: 14px 28px;
+    border-radius: var(--radius-sm);
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: var(--transition);
+    box-shadow: 0 4px 20px var(--red-glow), 0 0 15px rgba(255, 42, 59, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-submit:hover,
+.btn-primary:hover {
+    background: linear-gradient(135deg, #ff4757 0%, #ef4444 50%, #b91c1c 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px var(--red-glow-strong), 0 0 25px var(--primary-red);
+}
+
+.btn-secondary {
+    font-family: var(--font-heading);
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    border: 1px solid var(--border-glass);
+    padding: 13px 22px;
+    border-radius: var(--radius-sm);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 42, 59, 0.2);
+    border-color: var(--primary-red);
+    box-shadow: 0 0 15px var(--red-glow);
+    transform: translateY(-1px);
+}
+
+.form-actions {
+    margin-top: 10px;
+}
+
+.form-actions .btn-submit {
+    width: 100%;
+}
+
+/* ===================================================
+   TABLEAU DES JOUEURS (Translucide & Lumineux)
+   =================================================== */
+.stats-bar {
+    font-family: var(--font-heading);
+    background: rgba(10, 6, 9, 0.8);
+    border: 1px solid var(--border-glass);
+    border-left: 4px solid var(--primary-red);
+    padding: 12px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    box-shadow: 0 0 15px rgba(255, 42, 59, 0.1);
+}
+
+.stats-bar strong {
+    color: #ff6b78;
+    font-weight: 800;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.game-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(12, 8, 11, 0.7);
+    text-align: left;
+}
+
+.game-table thead {
+    background: linear-gradient(135deg, rgba(35, 14, 20, 0.95) 0%, rgba(20, 8, 12, 0.95) 100%);
+    border-bottom: 2px solid var(--primary-red);
+}
+
+.game-table th {
+    font-family: var(--font-heading);
+    padding: 14px 18px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ff8a95;
+    font-weight: 800;
+}
+
+.game-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(255, 42, 59, 0.15);
+    font-size: 0.95rem;
+    color: #f1f5f9;
+}
+
+.game-table tbody tr {
+    transition: var(--transition);
+}
+
+/* L'effet de survol a été désactivé à la demande de l'utilisateur pour éviter le bug d'affichage des images */
+
+.game-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.id-pill {
+    font-family: var(--font-mono);
+    color: #ff8a95;
+    background: rgba(255, 42, 59, 0.15);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border: 1px solid rgba(255, 42, 59, 0.3);
+}
+
+.fw-bold {
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.email-link {
+    color: #93c5fd;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.email-link:hover {
+    color: #60a5fa;
+    text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+    text-decoration: underline;
+}
+
+/* ===================================================
+   BADGES JEUX AVEC AURA NEON
+   =================================================== */
+.badge-game {
+    font-family: var(--font-heading);
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: rgba(10, 6, 9, 0.8);
+    border: 1px solid var(--border-glass);
+    color: #ffffff;
+}
+
+.badge-valorant {
+    border-color: rgba(255, 70, 85, 0.7);
+    color: #ff6b78;
+    background: rgba(255, 70, 85, 0.18);
+    box-shadow: 0 0 12px rgba(255, 70, 85, 0.25);
+}
+
+.badge-leagueoflegends {
+    border-color: rgba(56, 189, 248, 0.7);
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.18);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+}
+
+.badge-rocketleague {
+    border-color: rgba(96, 165, 250, 0.7);
+    color: #60a5fa;
+    background: rgba(96, 165, 250, 0.18);
+    box-shadow: 0 0 12px rgba(96, 165, 250, 0.25);
+}
+
+.badge-fortnite {
+    border-color: rgba(192, 132, 252, 0.7);
+    color: #c084fc;
+    background: rgba(192, 132, 252, 0.18);
+    box-shadow: 0 0 12px rgba(192, 132, 252, 0.25);
+}
+
+.badge-counterstrike {
+    border-color: rgba(251, 191, 36, 0.7);
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.18);
+    box-shadow: 0 0 12px rgba(251, 191, 36, 0.25);
+}
+
+/* ===================================================
+   BANNIÈRES DE RÉSULTAT
+   =================================================== */
+.success-banner {
+    background: rgba(16, 185, 129, 0.18);
+    border: 1px solid rgba(16, 185, 129, 0.6);
+    border-radius: var(--radius-sm);
+    padding: 26px;
+    text-align: center;
+    margin-bottom: 24px;
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+}
+
+.error-banner {
+    background: rgba(255, 42, 59, 0.18);
+    border: 1px solid rgba(255, 42, 59, 0.6);
+    border-radius: var(--radius-sm);
+    padding: 26px;
+    text-align: center;
+    margin-bottom: 24px;
+    box-shadow: 0 0 25px var(--red-glow);
+}
+
+.status-icon {
+    font-size: 2.4rem;
+    margin-bottom: 8px;
+}
+
+.success-banner h2 {
+    font-family: var(--font-heading);
+    color: #34d399;
+    font-size: 1.8rem;
+    margin-bottom: 4px;
+    text-shadow: 0 0 15px rgba(52, 211, 153, 0.5);
+}
+
+.error-banner h2 {
+    font-family: var(--font-heading);
+    color: #ff6b78;
+    font-size: 1.8rem;
+    margin-bottom: 4px;
+    text-shadow: 0 0 15px var(--red-glow);
+}
+
+.status-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.player-summary {
+    background: var(--glass-input);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    padding: 22px;
+    margin-bottom: 28px;
+}
+
+.player-summary h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.player-summary ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.player-summary li {
+    font-size: 0.95rem;
+    color: #e2e8f0;
+}
+
+.actions-group {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ===================================================
+   ÉTAT VIDE
+   =================================================== */
+.empty-state {
+    text-align: center;
+    padding: 45px 20px;
+}
+
+.empty-icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
+}
+
+.empty-state h3 {
+    font-family: var(--font-heading);
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+}
+
+.empty-state p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ===================================================
+   RESPONSIVE
+   =================================================== */
+@media (max-width: 600px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .card {
+        padding: 25px 20px;
+    }
+
+    .actions-group {
+        flex-direction: column;
+    }
+
+    .actions-group a {
+        width: 100%;
+    }
+}
+
+/* --- NOVEL COMPONENTS EXTRACTION --- */
+
+/* Auth Navbar */
+.nav-auth {
+    display: flex;
+    gap: 10px;
+    margin-left: 20px;
+}
+.nav-auth .btn-primary, .nav-auth .btn-secondary {
+    padding: 6px 15px;
+    font-size: 0.9em;
+    text-decoration: none;
+    border-radius: 6px;
+}
+.nav-auth .btn-primary {
+    box-shadow: 0 0 10px var(--red-glow);
+}
+
+/* Hero Section (index.php) */
+.hero-card {
+    text-align: center;
+    padding: 50px;
+}
+.hero-title {
+    margin: 20px 0;
+    font-size: 2.5em;
+    color: var(--primary-red);
+}
+.hero-subtitle {
+    font-size: 1.2em;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.hero-actions .btn-primary {
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 12px 30px;
+    border-radius: 8px;
+}
+.hero-btn-secondary {
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 12px 30px;
+    border: 1px solid var(--primary-red);
+    color: white;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+.hero-btn-secondary:hover {
+    background: rgba(255, 42, 59, 0.2);
+}
+
+/* Joueurs.php table logo */
+.table-logo-container {
+    display: flex;
+    align-items: center;
+}
+.table-logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+/* Jeux.php table row specific */
+.game-row {
+    background-repeat: no-repeat;
+    background-position: right 3% center;
+    background-size: auto 90%;
+}
+.game-cell {
+    padding: 25px 20px;
+}
+.game-badge {
+    font-size: 1.1em;
+}
+.game-desc {
+    color: #a0a0b0;
+    max-width: 400px;
+    line-height: 1.4;
+}
+
+.error-banner-sm {
+    background: rgba(255, 42, 59, 0.15);
+    border: 1px solid rgba(255, 42, 59, 0.5);
+    border-radius: var(--radius-sm);
+    padding: 10px 15px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #ffb3b3;
+    box-shadow: 0 0 10px rgba(255, 42, 59, 0.2);
+}
